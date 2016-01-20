@@ -91,7 +91,6 @@ public class Application extends Controller {
 					game = new GameInstance(out);
 					playerList.add(out);
 					gameList.add(game);
-					checkDoubleUser(out);
 				} else {
 					//playerList.clear();
 					playerList.remove(0);
@@ -99,7 +98,6 @@ public class Application extends Controller {
 				}
 
 				in.onMessage(event -> {
-					checkDoubleUser(out);
 					game = checkWhichGame(out);
 					// System.out.println(event);
 					switch (event.substring(0, 4)) {
@@ -115,26 +113,12 @@ public class Application extends Controller {
 
 				});
 				in.onClose(() -> {
-					checkDoubleUser(out);
 					game = checkWhichGame(out);
 					game.reset(true, out);
 					System.out.println("USER CLOSED CONNECTION:");
 				});
 			}
-			
-			private void checkDoubleUser(Out<String> out) {
-				int n = 0;
-					for (GameInstance gameInstance : gameList) {
-						
-						if ((gameInstance.player1.equals(out) || gameInstance.player2.equals(out)) && n == 1) {
-							gameList.remove(gameInstance);
-						}
-						
-						if (gameInstance.player1.equals(out) || gameInstance.player2.equals(out)) {
-							n++;
-						}							
-					}
-			}
+
 
 			private GameInstance checkWhichGame(Out<String> out) {
 				System.out.println("Laufene Spiele: " + gameList.size());
