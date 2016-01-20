@@ -13,6 +13,7 @@ GET         /current-user       @controllers.Application.currentUser
 GET     /                       controllers.Application.index()
 GET     /game                   controllers.Application.game() 
 GET     /socket                 controllers.Application.webSocket()
+GET     /rules                  controllers.Application.rules()
 
 
 # Map static resources from the /public folder to the /assets URL path
