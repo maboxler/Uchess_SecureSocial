@@ -28,6 +28,7 @@ import play.libs.F;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.WebSocket;
+import play.mvc.WebSocket.Out;
 import htwg.se.chess.Init;
 import securesocial.core.BasicProfile;
 import securesocial.core.RuntimeEnvironment;
@@ -98,7 +99,7 @@ public class Application extends Controller {
 				}
 
 				in.onMessage(event -> {
-					game = checkWhichGame(out);
+					checkWhichGame(out);
 					// System.out.println(event);
 					switch (event.substring(0, 4)) {
 					case "RESE":
@@ -113,24 +114,19 @@ public class Application extends Controller {
 
 				});
 				in.onClose(() -> {
-					game = checkWhichGame(out);
 					game.reset(true, out);
 					System.out.println("USER CLOSED CONNECTION:");
 				});
 			}
 
 
-			private GameInstance checkWhichGame(Out<String> out) {
-				System.out.println("Laufene Spiele: " + gameList.size());
-				if (gameList.size() > 1) {
-					for (GameInstance gameInstance : gameList) {
-						if (gameInstance.player1.equals(out) || gameInstance.player2.equals(out))
-							return gameInstance;
-					}
-
+			private void checkWhichGame(Out<String> out) {
+				for (GameInstance gameInstance : gameList) {
+					if (gameInstance.player1.equals(out) || gameInstance.player2.equals(out)) {
+						    game = gameInstance;
+					} 
 				}
-				return gameList.get(0);
-			}
+		}
 			
 		};
 	}
