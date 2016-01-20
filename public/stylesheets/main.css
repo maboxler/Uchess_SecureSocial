@@ -84,11 +84,11 @@ body {
 }
 .chat-me {
 	text-align: right;
-	background-color: #FFFFFD;
+	background-color: #E3FFC8;
 }
 .chat-opponent {
 	text-align: left;
-	background-color: #E3FFC8;
+	background-color: #FFFFFD;
 }
 .highlight {
     border: 3px solid lightgreen;
