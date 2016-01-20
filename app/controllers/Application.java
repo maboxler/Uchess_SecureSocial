@@ -114,15 +114,9 @@ public class Application extends Controller {
 
 				});
 				in.onClose(() -> {
-					checkGameAlive(game);
 					game.reset(true, out);
 					System.out.println("USER CLOSED CONNECTION:");
 				});
-			}
-			
-			private void checkGameAlive(GameInstance game) {
-						if (game.player1 == null && game.player2 == null)
-							gameList.remove(game);		
 			}
 
 			private GameInstance checkWhichGame(Out<String> out) {
