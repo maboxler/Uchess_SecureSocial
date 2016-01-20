@@ -119,6 +119,7 @@ public class Application extends Controller {
 
 				});
 				in.onClose(() -> {
+					checkWhichGame(out);
 					game.reset(true, out);
 					System.out.println("USER CLOSED CONNECTION:");
 				});
