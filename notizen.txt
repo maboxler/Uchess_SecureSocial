@@ -1,4 +1,4 @@
-secureSocial einbinden:
+﻿secureSocial einbinden:
 
 foglende Dateien übertragen in unser Projekt:
 
@@ -21,4 +21,5 @@ project/plugins.sbt					?ok	merge						vorerst neue zeilen auskommentiert
 	??public/javascripts/jquery..		erstmal nicht kopieren
 javaDemo.sbt						ok
 securesocial.sbt					ok
+
 
