@@ -1,0 +1,9 @@
+body {
+    background-image: url("/assets/images/bg.jpg");
+    background-size: cover;
+} 
+
+.vcenter {
+	margin: 25%;
+	text-align: center;
+}

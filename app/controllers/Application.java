@@ -73,7 +73,7 @@ public class Application extends Controller {
 	ArrayList<WebSocket.Out<String>> playerList = new ArrayList<WebSocket.Out<String>>();
 	List<GameInstance> gameList = new LinkedList<GameInstance>();
 
-	
+
 	public Result index() {
 		return ok(index.render("UChess Titel"));
 	}
@@ -93,9 +93,8 @@ public class Application extends Controller {
 					gameList.add(game);
 					System.out.println("count list " + playerList.size());
 				} else {
-					playerList.clear();
-					System.out.println("clear " + playerList.size());
-					// playerList.remove(0);
+					//playerList.clear();
+					playerList.remove(0);
 					game.setPlayer2(out);
 				}
 
@@ -115,12 +114,19 @@ public class Application extends Controller {
 
 				});
 				in.onClose(() -> {
+					checkGameAlive(game);
 					game.reset(true, out);
 					System.out.println("USER CLOSED CONNECTION:");
 				});
 			}
+			
+			private void checkGameAlive(GameInstance game) {
+						if (game.player1 == null && game.player2 == null)
+							gameList.remove(game);		
+			}
 
 			private GameInstance checkWhichGame(Out<String> out) {
+				System.out.println("Laufene Spiele: " + gameList.size());
 				if (gameList.size() > 1) {
 					for (GameInstance gameInstance : gameList) {
 						if (gameInstance.player1.equals(out) || gameInstance.player2.equals(out))
@@ -130,6 +136,7 @@ public class Application extends Controller {
 				}
 				return gameList.get(0);
 			}
+			
 		};
 	}
        
