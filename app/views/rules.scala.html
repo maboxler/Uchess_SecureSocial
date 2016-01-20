@@ -1,0 +1,35 @@
+@(title: String)
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>@title</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/index.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+       	
+    	<!-- Latest compiled and minified JavaScript -->
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js"></script>
+        
+               
+        
+        
+    </head>
+    <body>
+    <div  class="vcenter">
+    <div>
+	    <img src="/assets/images/logo.png"  alt="Logo"> 
+	    </div>
+	    
+		UChess ist ein Schach klon mit minimalen Spieländerungen. Es fängt immer Schwarz an mit ziehen. Es gewinnt der Spieler der es zuerst schafft den König des Gegners zu schlagen.
+		Nach einem Sieg gibt es die moeglichkeit seinen Gegener nochmals heraus zu Fodern. Kommunikation ist auch ueber einen simplen Chat moeglich. <br>
+		
+	    <form action="/">
+	    <input type="submit" value="Zurueck">
+	    </form>
+    </div> 
+    </div> 
+    </body>
+</html>

@@ -79,6 +79,10 @@ public class Application extends Controller {
 		return ok(index.render("UChess Titel"));
 	}
 	
+	public Result rules() {
+		return ok(rules.render("UChess Titel"));
+	}
+	
 	@SecuredAction
 	public Result game() {
 		return ok(ng_wui.render());
